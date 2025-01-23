@@ -4,7 +4,7 @@ import java.util.List;
 
 public class noneMatch {
     public static void main(String[] args) {
-        List<Employee> employees=EmployeeRepository.createEmployeeList();
+        List<Employees> employees=EmployeeRepository.createEmployeeList();
 
         boolean nonMach=employees.stream().noneMatch(employee -> employee.getSalary() <5000);
 

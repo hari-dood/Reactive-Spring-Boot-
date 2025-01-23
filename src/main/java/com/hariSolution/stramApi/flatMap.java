@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-class Employee {
+class Employees {
     private Integer id;
     private String name;
     private String department;
     private final Double salary;
 
     // Constructor
-    public Employee(Integer id, String name, String department, Double salary) {
+    public Employees(Integer id, String name, String department, Double salary) {
         this.id = id;
         this.name = name;
         this.department = department;
@@ -37,16 +37,16 @@ class Employee {
 
 class Department {
     private String departmentName;
-    private List<Employee> employees;
+    private List<Employees> employees;
 
     // Constructor
-    public Department(String departmentName, List<Employee> employees) {
+    public Department(String departmentName, List<Employees> employees) {
         this.departmentName = departmentName;
         this.employees = employees;
     }
 
     // Getter for employees
-    public List<Employee> getEmployees() {
+    public List<Employees> getEmployees() {
         return employees;
     }
 
@@ -57,20 +57,20 @@ class Department {
 
 public class flatMap {
     public static void main(String[] args) {
-        List<Employee> itEmployees = Arrays.asList(new Employee(1, "John", "IT", 75000.0), new Employee(2, "Jane", "IT", 80000.0));
+        List<Employees> itEmployees = Arrays.asList(new Employees(1, "John", "IT", 75000.0), new Employees(2, "Jane", "IT", 80000.0));
 
-        List<Employee> hrEmployees = Arrays.asList(new Employee(3, "Alice", "HR", 60000.0), new Employee(4, "Bob", "HR", 65000.0));
+        List<Employees> hrEmployees = Arrays.asList(new Employees(3, "Alice", "HR", 60000.0), new Employees(4, "Bob", "HR", 65000.0));
 
-        List<Employee> financeEmployees = Arrays.asList(new Employee(5, "Charlie", "Finance", 90000.0), new Employee(6, "David", "Finance", 85000.0));
+        List<Employees> financeEmployees = Arrays.asList(new Employees(5, "Charlie", "Finance", 90000.0), new Employees(6, "David", "Finance", 85000.0));
 
         // Create departments
         List<Department> departments = Arrays.asList(new Department("IT", itEmployees), new Department("HR", hrEmployees), new Department("Finance", financeEmployees));
 
-        List<Employee> allEmployees = departments.stream().flatMap(department -> department.getEmployees().stream()).collect(Collectors.toList());
+        List<Employees> allEmployees = departments.stream().flatMap(department -> department.getEmployees().stream()).collect(Collectors.toList());
 
         allEmployees.forEach(System.out::println);
 
-        Employee highestPaidEmployee = allEmployees.stream().max(Comparator.comparing(Employee::getSalary)).get();
+        Employees highestPaidEmployee = allEmployees.stream().max(Comparator.comparing(Employees::getSalary)).get();
 
         System.out.println(highestPaidEmployee);
 

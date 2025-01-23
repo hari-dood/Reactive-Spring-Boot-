@@ -6,7 +6,7 @@ import java.util.List;
 public class sorted {
 
     public static void main(String[] args) {
-        List<Employee> employees=EmployeeRepository.createEmployeeList();
+        List<Employees> employees=EmployeeRepository.createEmployeeList();
 
         employees.stream()
                 .map(emp->emp.getSalary())
@@ -16,6 +16,6 @@ public class sorted {
                 .map(emp->emp.getSalary())
                 .sorted((s1,s2)->s1-s2).toList().forEach(System.out::println);
 
-        employees.stream().sorted(Comparator.comparing(Employee::getName)).toList().forEach(System.out::println);
+        employees.stream().sorted(Comparator.comparing(Employees::getName)).toList().forEach(System.out::println);
     }
 }
